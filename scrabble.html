@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrabble</title>
+    <script src="https://kit.fontawesome.com/147b83005f.js" crossorigin="anonymous"></script>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+        }
+        .main{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow:hidden;
+        }
+        .container{
+            text-align:center;
+            font-weight: bold;
+            width: 500px;
+            height: 500px;
+            display: grid;
+            grid-template-columns: repeat(1,1fr);
+            grid-template-rows: repeat(17,1fr);
+            overflow: hidden;
+        }
+        .row{
+            display: grid;
+            grid-template-columns: repeat(17,1fr);
+            grid-template-rows: repeat(1,1fr);
+            border: 1px solid rgb(0, 0, 0);
+
+        }
+        .col{
+            border: 1px solid;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .no-border{
+            border: none;
+        }
+        div.row{
+            counter-reset: col-counter;
+            counter-set: row-counter-lower;
+        }
+        div.no-border::after{
+            content: counter(col-counter);
+            counter-increment: col-counter;
+        }
+        .hide{
+            border: none;
+        }
+        .container{
+            counter-reset: row-counter-left;
+            counter-set: row-counter-right;
+
+        }
+        .lower-counter{
+            border: none;
+        }
+        .lower-counter::after{
+            content: counter(row-counter-lower);
+            counter-increment: row-counter-lower;
+        }
+        .row-counter-left::after{
+            content: counter(row-counter-left,upper-alpha);
+            counter-increment: row-counter-left;
+        }
+        .row-counter-right::after{
+            content: counter(row-counter-right,upper-alpha);
+            counter-increment: row-counter-right;
+        }
+        .red{
+            background-color: red;
+        }
+        .red::before,.sea::before,.pink::before,.blue::before{
+            content: "TRIPLE WORLD";
+            font-size: 6px;
+            /* font-weight:bold; */
+        }
+        .sea{
+            background-color: rgb(133, 205, 233);
+        }
+        .pink{
+            background-color: rgb(255, 184, 196);
+        }
+        .blue{
+            background-color: rgb(50, 50, 246);
+        }
+        .normal{
+            background-color: green;
+        }
+        .middle{
+            background-color:rgb(255, 184, 196) ;
+        }
+
+   
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="container">
+            <div class="row hide">
+                <div class="col hide"></div>
+                <div class="col no-border"></div>
+                <div class="col no-border"></div>
+                <div class="col no-border"></div>
+                <div class="col no-border"></div>
+                <div class="col no-border"></div>
+                <div class="col no-border"></div>
+                <div class="col no-border"></div>
+                <div class="col no-border"></div>
+                <div class="col no-border"></div>
+                <div class="col no-border"></div>
+                <div class="col no-border"></div>
+                <div class="col no-border"></div>
+                <div class="col no-border"></div>
+                <div class="col no-border"></div>
+                <div class="col no-border"></div>
+                <div class="col hide"></div>
+            </div>
+            <div class="row hide">
+                <div class="col hide row-counter-left"></div>
+                <div class="col red "></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col sea"></div>
+                <div class="col normal "></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col red"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col sea"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col red"></div>
+                <div class="col  hide row-counter-right"></div>
+            </div>
+            <div class="row hide">
+                <div class="col hide row-counter-left"></div>
+                <div class="col normal"></div>
+                <div class="col pink"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col blue"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal "></div>
+                <div class="col blue"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col pink"></div>
+                <div class="col normal"></div>
+                <div class="col hide row-counter-right"></div>
+            </div>
+            <div class="row hide">
+                <div class="col hide row-counter-left"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col pink"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col sea"></div>
+                <div class="col normal"></div>
+                <div class="col sea"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col pink"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col hide row-counter-right"></div>
+            </div>
+            <div class="row hide">
+                <div class="col hide row-counter-left"></div>
+                <div class="col sea"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col pink"></div>
+                <div class="col normal "></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col sea"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col pink"></div>
+                <div class="col normal "></div>
+                <div class="col normal"></div>
+                <div class="col sea"></div>
+                <div class="col hide row-counter-right"></div>
+            </div>
+            <div class="row hide">
+                <div class="col hide row-counter-left"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col pink"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col pink"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col hide row-counter-right"></div>
+            </div>
+            <div class="row hide">
+                <div class="col hide row-counter-left"></div>
+                <div class="col normal"></div>
+                <div class="col blue"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col blue"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col blue "></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col blue"></div>
+                <div class="col normal"></div>
+                <div class="col hide row-counter-right"></div>
+            </div>
+            <div class="row hide">
+                <div class="col hide row-counter-left"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col pink"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col pink"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col hide row-counter-right"></div>
+            </div>
+            <div class="row hide">
+                <div class="col hide row-counter-left"></div>
+                <div class="col red"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col pink"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col middle"><i class="fa-solid fa-star"></i></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col pink"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col red"></div>
+                <div class="col hide row-counter-right"></div>
+            </div>
+            <div class="row hide">
+                <div class="col hide row-counter-left"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col hide row-counter-right"></div>
+            </div>
+            <div class="row hide">
+                <div class="col hide row-counter-left"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col blue"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col blue"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col hide row-counter-right"></div>
+            </div>
+            <div class="row hide">
+                <div class="col hide row-counter-left"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col pink"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col pink"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col hide row-counter-right"></div>
+            </div>
+            <div class="row hide">
+                <div class="col hide row-counter-left"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col pink"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col pink"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col hide row-counter-right"></div>
+            </div>
+            <div class="row hide">
+                <div class="col hide row-counter-left"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col pink"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col pink"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col hide row-counter-right"></div>
+            </div>
+            <div class="row hide">
+                <div class="col hide row-counter-left"></div>
+                <div class="col normal"></div>
+                <div class="col pink"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col pink"></div>
+                <div class="col normal"></div>
+                <div class="col hide row-counter-right"></div>
+            </div>
+            <div class="row hide">
+                <div class="col hide row-counter-left"></div>
+                <div class="col red"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col red"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col normal"></div>
+                <div class="col red"></div>
+                <div class="col hide row-counter-right"></div>
+            </div>
+            <div class="row hide">
+                <div class="col hide"></div>
+                <div class="col lower-counter"></div>
+                <div class="col lower-counter"></div>
+                <div class="col lower-counter"></div>
+                <div class="col lower-counter"></div>
+                <div class="col lower-counter"></div>
+                <div class="col lower-counter"></div>
+                <div class="col lower-counter"></div>
+                <div class="col lower-counter"></div>
+                <div class="col lower-counter"></div>
+                <div class="col lower-counter"></div>
+                <div class="col lower-counter"></div>
+                <div class="col lower-counter"></div>
+                <div class="col lower-counter"></div>
+                <div class="col lower-counter"></div>
+                <div class="col  lower-counter"></div>
+            </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
